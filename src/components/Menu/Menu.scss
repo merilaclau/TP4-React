@@ -6,7 +6,7 @@
     position: absolute;
     width: 100%;
     bottom: 0;
-
+    margin: 0 auto;
     .header-menu-button{
         font-size: 27px;
         background-color: transparent;
@@ -14,43 +14,21 @@
         outline: none;
         color: rgb(220, 221, 222);
     }
+    .header-menu{
+        list-style: none;
+    }
 }
 
     @media (min-width: 600px) {
     .header-menu {
         position: relative;
-        top: -31px;
+        top: 0px;
         justify-content: space-around;
         text-align: center;
         z-index: 99;
         padding: 5px 0px;
+        background: transparent;
+        width: 300px;
+        list-style: none;
     }
 }
-
-
-/* 
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.link {
-    color: rgb(220, 221, 222);
-    margin: 0 1.5rem;
-}
-
-.svg {
-    width: 1.8rem;
-    display: inline-block;
-}
-
-.svgmovie {
-    width: 2rem;
-    padding-top: .2rem;
-    display: inline-block;
-}
-
-
- */
