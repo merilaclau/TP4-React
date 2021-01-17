@@ -1,11 +1,17 @@
+import React from 'react';
+import NavBar from './components/NavBar/NavBar';
+import MainContainer from './components/MainContainer/MainContainer';
 import './App.scss';
 import SearchInput from './components/SearchInput/SearchInput';
 
 const App = () => {
   return (
-    <div>
-      <SearchInput></SearchInput>
-    </div>
+    <React.Fragment>
+      <NavBar> 
+        <SearchInput></SearchInput>
+      </NavBar>
+      <MainContainer />
+    </React.Fragment>
   );
 }
 
