@@ -15,6 +15,7 @@ const SearchInput = () => {
     setTimeout(() => {
       if (inputValue.length > 0) {
         getSearchResults(inputValue).then(data => setData(data.results));
+        console.log(data);
       }
      }, 1500) //revisar tema token de timeout para evitar multiples llamadas a la API
   }, [inputValue])
