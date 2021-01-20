@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import './Card.scss';
 
 const Card = ({name, poster_path, rating}) => {
@@ -6,14 +8,14 @@ const Card = ({name, poster_path, rating}) => {
     <article className = "card">
       <div className = "card--header">
         <img className="card--img" src={poster_path} />   
-        <h3 className="card--header-title" >
-          {name}
-        </h3>  
       </div>
       <div className = "card--content">
-        <p>
-          {rating}
-        </p>
+        <h3 className="card--content-title" >
+          {name}
+        </h3>  
+        <span className="card--content-rating">
+        <FontAwesomeIcon icon={faStar} /> {rating}
+        </span>
       </div>  
     </article>
 
