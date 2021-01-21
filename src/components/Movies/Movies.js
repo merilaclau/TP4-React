@@ -11,7 +11,7 @@ const Movies = () => {
 
     useEffect(() => {
 
-        getElements("popular", "movie").then(data => setDataMovies(data.results.slice(0, 5)));
+        getElements("trending", "movie").then(data => setDataMovies(data.results.slice(0, 5)));
 
     }, [])
 
