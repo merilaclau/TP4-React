@@ -2,13 +2,13 @@ import axios from 'axios';
 
 const baseUrl = 'https://api.themoviedb.org/3/';
 const apiKey = 'c109fe29d552e543e892f6c6ec7a140c';
-let classification = ['trending', 'popular', 'top_rated', 'on_the_air', 'now_playing', 'upcoming']
+//let classification = ['trending', 'popular', 'top_rated', 'on_the_air', 'now_playing', 'upcoming']
 
-export const getElements = async (classification, mediatype) => {
+export const getTrendingElements = async (classification, mediatype) => {
     try {
         const res = await axios.get(baseUrl + `${classification}/${mediatype}/day?api_key=${apiKey}`);
         return res.data;
-    } catch (err) {
+    }catch(err) {
         throw new Error(`Error getting trending results: ${err}`);
     }
 }
@@ -44,7 +44,10 @@ export const getSearchResults = async (inputValue) => {
 }
 
 
-/*MOVIES
+/*
+${timerange}
+
+MOVIES
 
 /*Popular movies (igual a series cambiando media type)
 https://api.themoviedb.org/3/movie/popular?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US&page=1

@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './MainContainer.scss';
 import CardList from '../CardList/CardList';
-import { getElements } from '../../services/services';
+import { getTrendingElements } from '../../services/services';
 
 
 const MainContainer = () => {
@@ -12,8 +12,8 @@ const MainContainer = () => {
 
     useEffect(() => {
 
-        getElements("trending", "movie").then(data => setDataMovies(data.results.slice(0, 5)));
-        getElements("trending", "tv").then(data => setDataSeries(data.results.slice(0, 5)));
+        getTrendingElements("trending", "movie").then(data => setDataMovies(data.results.slice(0, 5)));
+        getTrendingElements("trending", "tv").then(data => setDataSeries(data.results.slice(0, 5)));
 
     }, [])
 
@@ -22,7 +22,6 @@ const MainContainer = () => {
 
     return (
         <main className="main-container">
-            {/*  Aca van la cardlist de pelis y la de series */}
             <CardList title={'Peliculas que son tendencia'} data={dataMovies}>
             </CardList>
 
