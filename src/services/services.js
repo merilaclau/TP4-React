@@ -2,12 +2,29 @@ import axios from 'axios';
 
 const baseUrl = 'https://api.themoviedb.org/3/';
 const apiKey = 'c109fe29d552e543e892f6c6ec7a140c';
+let classification = ['trending', 'popular', 'top_rated', 'on_the_air', 'now_playing', 'upcoming']
 
 export const getElements = async (classification, mediatype) => {
     try {
         const res = await axios.get(baseUrl + `${classification}/${mediatype}/day?api_key=${apiKey}`);
         return res.data;
-    }catch(err) {
+    } catch (err) {
+        throw new Error(`Error getting trending results: ${err}`);
+    }
+}
+export const getElementsSeries = async () => {
+    try {
+        const res = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US&page=1');
+        return res.data;
+    } catch (err) {
+        throw new Error(`Error getting trending results: ${err}`);
+    }
+}
+export const getElementsTopSeries = async () => {
+    try {
+        const res = await axios.get('https://api.themoviedb.org/3/tv/top_rated?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US&page=1');
+        return res.data;
+    } catch (err) {
         throw new Error(`Error getting trending results: ${err}`);
     }
 }
@@ -21,7 +38,7 @@ export const getSearchResults = async (inputValue) => {
     try {
         const res = await axios.get(baseUrl + `search/multi?api_key=${apiKey}&language=en-US&query=${inputValue}&page=1&include_adult=false`);
         return res.data;
-    }catch(err) {
+    } catch (err) {
         throw new Error(`Error getting search results: ${err}`);
     }
 }

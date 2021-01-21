@@ -2,34 +2,35 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './Series.scss';
 import CardList from '../CardList/CardList';
-import { getElements } from '../../services/services';
+import { getElementsTopSeries, getElementsSeries } from '../../services/services';
 
 
 const Series = () => {
 
-    const [dataSeries, setDataSeries] = useState([]);
+    const [dataPopularSeries, setDataPopularSeries] = useState([]);///popular
+    const [dataTopSeries, setDataTopSeries] = useState([]);///popular
+
 
     useEffect(() => {
 
-        getElements("trending", "tv").then(data => setDataSeries(data.results.slice(0, 5)));
+        getElementsSeries("tv", "popular").then(data => setDataPopularSeries(data.results.slice(0, 5)));
+        getElementsTopSeries("tv", "top_rated").then(data => setDataTopSeries(data.results.slice(0, 5)));
 
     }, [])
 
-    console.log('dataSeries', dataSeries);
+    console.log('dataPopularSeries', dataPopularSeries);
     return (
         <main className="main-container">
             {/*  Aca van la cardlist de pelis y la de series */}
-            <CardList title={'Peliculas populares'} data={dataSeries}>
+            <CardList title={'Series populares'} data={dataPopularSeries}>
             </CardList>
 
-            <CardList title={'Peliculas con mejores Criticas'} data={dataSeries}>
+            <CardList title={'Series con mejores Criticas'} data={dataTopSeries}>
             </CardList>
 
-            <CardList title={'Peliculas a estrenarse'} data={dataSeries}>
+            <CardList title={'Series al aire'} data={dataPopularSeries}>
             </CardList>
 
-            <CardList title={'Peliculas en cine'} data={dataSeries}>
-            </CardList>
         </main>
     )
 }
