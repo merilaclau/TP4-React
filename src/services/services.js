@@ -3,12 +3,12 @@ import axios from 'axios';
 const baseUrl = 'https://api.themoviedb.org/3/';
 const apiKey = 'c109fe29d552e543e892f6c6ec7a140c';
 
-export const getElements = async (classification, mediatype) => {
+export const getElements = async (mediatype, classification, timerange = "") => {
     try {
-        const res = await axios.get(baseUrl + `${classification}/${mediatype}/day?api_key=${apiKey}`);
+        const res = await axios.get(baseUrl + `${mediatype}/${classification}${timerange}?api_key=${apiKey}`);
         return res.data;
     }catch(err) {
-        throw new Error(`Error getting trending results: ${err}`);
+        throw new Error(`Error getting elements: ${err}`);
     }
 }
 
