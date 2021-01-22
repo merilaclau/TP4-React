@@ -2,52 +2,38 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './Movies.scss';
 import CardList from '../CardList/CardList';
-import { getElements } from '../../services/services';
+import { getMoviesSeries } from '../../services/services';
 
 
 const Movies = () => {
 
-    const [dataMovies, setDataMovies] = useState([]);
+    const [dataPopularMovies, setDataPopularMovies] = useState([]);
+    const [dataTopRatedMovies, setDataTopRatedMovies] = useState([]);
+    const [dataUpcomingMovies, setDataUpcomingMovies] = useState([]);
+    const [dataNowPlayingMovies, setDataNowPlayingMovies] = useState([]);
 
-    useEffect(() => {
-
-        //getElements("trending", "movie").then(data => setDataMovies(data.results.slice(0, 5)));
-
+    useEffect( async() => {
+        getMoviesSeries("movie", "popular").then(data => setDataPopularMovies(data.results.slice(0, 5)));
+        getMoviesSeries("movie", "top_rated").then(data => setDataTopRatedMovies(data.results.slice(0, 5)));
+        getMoviesSeries("movie", "upcoming").then(data => setDataUpcomingMovies(data.results.slice(0, 5)));
+        getMoviesSeries("movie", "now_playing").then(data => setDataNowPlayingMovies(data.results.slice(0, 5)));
     }, [])
-
-    console.log('dataMovies', dataMovies);
 
     return (
         <main className="main-container">
-            {/*  Aca van la cardlist de pelis y la de series */}
-            <CardList title={'Peliculas populares'} data={dataMovies}>
+            <CardList title={'Películas populares'} data={dataPopularMovies}>
             </CardList>
 
-            <CardList title={'Peliculas con mejores Criticas'} data={dataMovies}>
+            <CardList title={'Películas con mejores Criticas'} data={dataTopRatedMovies}>
             </CardList>
 
-            <CardList title={'Peliculas a estrenarse'} data={dataMovies}>
+            <CardList title={'Películas a estrenarse'} data={dataUpcomingMovies}>
             </CardList>
 
-            <CardList title={'Peliculas en cine'} data={dataMovies}>
+            <CardList title={'Películas en cartelera'} data={dataNowPlayingMovies}>
             </CardList>
         </main>
     )
 }
 
 export default Movies;
-
-
-
-// MOVIES!!!
-
-// const moviesClassification = ["top_rated", "popular", "upcoming"];
-
-// moviesClassification.map(classification => {
-//   getElements("movies", classification)
-//   <Cadrlihg>
-//     slide.data.map(card => {
-
-//     })
-//   </Cadrlihg>
-// })

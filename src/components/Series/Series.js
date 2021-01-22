@@ -2,52 +2,34 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './Series.scss';
 import CardList from '../CardList/CardList';
-import { getElementsTopSeries, getElementsSeries } from '../../services/services';
+import { getMoviesSeries } from '../../services/services';
 
 
 const Series = () => {
 
-    const [dataPopularSeries, setDataPopularSeries] = useState([]);///popular
-    const [dataTopSeries, setDataTopSeries] = useState([]);///popular
+    const [dataPopularSeries, setDataPopularSeries] = useState([]);
+    const [dataTopRatedSeries, setDataTopRatedSeries] = useState([]);
+    const [dataAiringTodaySeries, setDataAiringTodaySeries] = useState([]);
 
 
-    useEffect(() => {
-
-        getElementsSeries("tv", "popular").then(data => setDataPopularSeries(data.results.slice(0, 5)));
-        getElementsTopSeries("tv", "top_rated").then(data => setDataTopSeries(data.results.slice(0, 5)));
-
+    useEffect( async() => {
+        getMoviesSeries("tv", "popular").then(data => setDataPopularSeries(data.results.slice(0, 5)));
+        getMoviesSeries("tv", "top_rated").then(data => setDataTopRatedSeries(data.results.slice(0, 5)));
+        getMoviesSeries("tv", "airing_today").then(data => setDataAiringTodaySeries(data.results.slice(0, 5)));
     }, [])
 
-    console.log('dataPopularSeries', dataPopularSeries);
     return (
         <main className="main-container">
-            {/*  Aca van la cardlist de pelis y la de series */}
             <CardList title={'Series populares'} data={dataPopularSeries}>
             </CardList>
 
-            <CardList title={'Series con mejores Criticas'} data={dataTopSeries}>
+            <CardList title={'Series con mejores Criticas'} data={dataTopRatedSeries}>
             </CardList>
 
-            <CardList title={'Series al aire'} data={dataPopularSeries}>
+            <CardList title={'Series en el aire'} data={dataAiringTodaySeries}>
             </CardList>
-
         </main>
     )
 }
 
 export default Series;
-
-
-
-// MOVIES!!!
-
-// const moviesClassification = ["top_rated", "popular", "upcoming"];
-
-// moviesClassification.map(classification => {
-//   getElements("movies", classification)
-//   <Cadrlihg>
-//     slide.data.map(card => {
-
-//     })
-//   </Cadrlihg>
-// })
