@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import './Movies.scss';
-import CardList from '../CardList/CardList';
-import { getMoviesSeries } from '../../services/services';
+import CardList from '../../CardList/CardList';
+import { getMoviesSeries } from '../../../services/services';
 
 
 const Movies = () => {
@@ -12,7 +12,7 @@ const Movies = () => {
     const [dataUpcomingMovies, setDataUpcomingMovies] = useState([]);
     const [dataNowPlayingMovies, setDataNowPlayingMovies] = useState([]);
 
-    useEffect( async() => {
+    useEffect(async () => {
         getMoviesSeries("movie", "popular").then(data => setDataPopularMovies(data.results.slice(0, 5)));
         getMoviesSeries("movie", "top_rated").then(data => setDataTopRatedMovies(data.results.slice(0, 5)));
         getMoviesSeries("movie", "upcoming").then(data => setDataUpcomingMovies(data.results.slice(0, 5)));
