@@ -9,7 +9,7 @@ export const getTrendingElements = async (classification, mediatype) => {
     try {
         const res = await axios.get(baseUrl + `${classification}/${mediatype}/day?api_key=${apiKey}`);
         return res.data;
-    }catch(err) {
+    } catch (err) {
         throw new Error(`Error getting trending elements: ${err}`);
     }
 }
@@ -21,7 +21,7 @@ export const getMoviesSeries = async (mediatype, classification) => {
     try {
         const res = await axios.get(baseUrl + `${mediatype}/${classification}?api_key=${apiKey}&language=en-US&page=1`);
         return res.data;
-    }catch(err) {
+    } catch (err) {
         throw new Error(`Error getting movies or series: ${err}`);
     }
 }

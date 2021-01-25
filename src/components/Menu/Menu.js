@@ -9,9 +9,9 @@ const Menu = () => {
     return (
         <section className="header-container">
             <ul className="header-menu">
-                <Link className="header-menu-button" to={{ pathname: `/` }}><FontAwesomeIcon icon={faHome} /></Link>
-                <Link className="header-menu-button" to={{ pathname: `/movie` }}><FontAwesomeIcon icon={faVideo} /></Link>
-                <Link className="header-menu-button" to={{ pathname: `/tv` }}><FontAwesomeIcon icon={faTv} /></Link>
+                <Link className="header-menu-button" to={{ pathname: `/` }} activeStyle={{ color: "#2296F3" }}><FontAwesomeIcon icon={faHome} /></Link>
+                <Link className="header-menu-button" to={{ pathname: `/movie` }} activeStyle={{ color: "#2296F3" }}><FontAwesomeIcon icon={faVideo} /></Link>
+                <Link className="header-menu-button" to={{ pathname: `/tv` }} activeStyle={{ color: "#2296F3" }}><FontAwesomeIcon icon={faTv} /></Link>
             </ul>
         </section>
     )
