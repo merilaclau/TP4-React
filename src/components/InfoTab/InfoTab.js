@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import './MovieNav.scss';
+import './InfoTab.scss';
 
-const MovieNav = () => {
+const InfoTab = () => {
     return (
         <div className="MovieNav">
             <div className="MovieNav-Bar">
@@ -23,4 +23,4 @@ const MovieNav = () => {
     )
 }
 
-export default MovieNav;
+export default InfoTab;

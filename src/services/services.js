@@ -26,6 +26,14 @@ export const getMoviesSeries = async (mediatype, classification) => {
     }
 }
 
+export const getMoviesSeriesInfo = async (mediatype, id) => {
+    try {
+        const res = await axios.get(baseUrl + `${mediatype}/${id}?api_key=${apiKey}&language=en-US&page=1`);
+        return res.data;
+    } catch (err) {
+        throw new Error(`Error getting movies or series: ${err}`);
+    }
+}
 //SEARCH
 export const getSearchResults = async (inputValue) => {
     try {
@@ -37,6 +45,9 @@ export const getSearchResults = async (inputValue) => {
 }
 
 
+
+/* https://api.themoviedb.org/3/movie/{movie_id}?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US */
+/* https://api.themoviedb.org/3/tv/{tv_id}?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US */
 /*
 Series al aire
 https://api.themoviedb.org/3/tv/airing_today?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US&page=1

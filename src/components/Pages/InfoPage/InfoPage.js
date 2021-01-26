@@ -1,8 +1,8 @@
 import React from 'react';
 /* import { useEffect, useState } from 'react'; */
 import './InfoPage.scss';
-import Poster from '../Poster/Poster';
-import MovieNav from '../MovieNav/MovieNav';
+import Poster from '../../Poster/Poster';
+import InfoTab from '../../InfoTab/InfoTab';
 
 
 
@@ -10,7 +10,7 @@ import MovieNav from '../MovieNav/MovieNav';
 /* import { getTrendingElements } from '../../services/services'; */
 
 
-const InfoPage = () => {
+const InfoPage = (dataSeriesMoviesInfo) => {
 
     /*   useEffect(() => {
   
@@ -25,7 +25,7 @@ const InfoPage = () => {
     return (
         <main className="main-container">
             <Poster></Poster>
-            <MovieNav />
+            <InfoTab />
 
         </main>
     )
