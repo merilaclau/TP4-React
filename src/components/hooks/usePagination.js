@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const usePagination = (totalPages, currentPage) => {
+const usePagination = (totalPages, currentPageParam) => {
   const pages = totalPages;
   const pagination = [];
-  const [currentPage, setCurrentPage] = useState(currentPage);
+  const [currentPage, setCurrentPage] = useState(currentPageParam);
 
   let ellipsisLeft = false;
   let ellipsisRight = false;
@@ -41,7 +41,6 @@ const usePagination = (totalPages, currentPage) => {
   const goToPrevPage = (e) => {
     e.preventDefault();
     setCurrentPage(prevVal => prevVal - 1 === 0 ? prevVal : prevVal - 1);
-    }
   }
   
   const goToNextPage = (e) => {
@@ -49,8 +48,7 @@ const usePagination = (totalPages, currentPage) => {
     setCurrentPage(prevVal => prevVal === pages ? prevVal : prevVal + 1);
   }
 
-  return {
-    pagination,
+  return { pagination,
     prevPage: goToPrevPage,
     nextPage: goToNextPage,
     changePage
