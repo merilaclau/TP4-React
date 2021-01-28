@@ -26,6 +26,15 @@ export const getMoviesSeries = async (mediatype, classification) => {
     }
 }
 
+export const getMoviesSeriesByPage = async (mediatype, classification, page) => {
+    try {
+        const res = await axios.get(baseUrl + `${mediatype}/${classification}?api_key=${apiKey}&language=en-US&page=${page}`);
+        return res.data;
+    }catch(err) {
+        throw new Error(`Error getting movies or series: ${err}`);
+    }
+}
+
 //SEARCH
 export const getSearchResults = async (inputValue) => {
     try {

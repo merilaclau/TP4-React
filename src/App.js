@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar';
 import Movies from './components/Movies/Movies';
 import Series from './components/Series/Series';
+import CardCollectionPage from './components/Pages/CardCollectionPage'
 import MainContainer from './components/MainContainer/MainContainer';
 import './App.scss';
 
@@ -14,6 +15,9 @@ const App = () => {
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/movie' component={Movies} />
         <Route exact path='/tv' component={Series} />
+        <Route exact path='/movie/:classification/page/:currentPage' component={CardCollectionPage} />
+        <Route exact path='/tv/:classification/page/:currentPage' component={CardCollectionPage} />
+        <Route exact path='/multi/:query/page/:currentPage' component={CardCollectionPage} />
       </Switch>
     </BrowserRouter>
   );
