@@ -11,18 +11,18 @@ const usePagination = (totalPages, currentPageParam) => {
     }
 
     if (totalPages > 7) {
-      pagination.push(`&#8230;`);
+      pagination.push(`&hellip;`);
     } else {
       pagination.push(6);
     }
 
     pagination.push(totalPages);
   } 
-  else if (currentPage === totalPages || currentPage >= (totalPages - 5)) {
+  else if (currentPage === totalPages || currentPage > (totalPages - 4)) {
     pagination.push(1);
-    pagination.push(`&#8230;`);
+    pagination.push(`&hellip;`);
 
-    for (let i = (totalPages - 5); i <= totalPages; i++) {
+    for (let i = (totalPages - 4); i <= totalPages; i++) {
       pagination.push(i);
     }
   } 
@@ -30,29 +30,26 @@ const usePagination = (totalPages, currentPageParam) => {
     pagination.push(1);
 
     if (((currentPage - 1) > 3) || ((currentPage + 1) < (totalPages - 3))) {
-      pagination.push(`&#8230;`);
+      pagination.push(`&hellip;`);
       pagination.push(currentPage - 1);
       pagination.push(currentPage);
       pagination.push(currentPage + 1);
-      pagination.push(`&#8230;`);
+      pagination.push(`&hellip;`);
     }
     pagination.push(totalPages);
   }
 
-  const changePage = (page, e) => {
-    e.preventDefault();
+  const changePage = (page) => {
     if(page !== currentPage) {
       setCurrentPage(page);
     }
   }
 
-  const goToPrevPage = (e) => {
-    e.preventDefault();
+  const goToPrevPage = () => {
     setCurrentPage(prevVal => prevVal - 1 === 0 ? prevVal : prevVal - 1);
   }
   
-  const goToNextPage = (e) => {
-    e.preventDefault();
+  const goToNextPage = () => {
     setCurrentPage(prevVal => prevVal === totalPages ? prevVal : prevVal + 1);
   }
 

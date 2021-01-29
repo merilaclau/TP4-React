@@ -3,21 +3,22 @@ import { getMoviesSeriesByPage } from '../../services/services';
 import { Link, useParams } from "react-router-dom";
 import usePagination from '../hooks/usePagination';
 
-const CardCollectionPage = (props) => {
+//tenemos que pasarle mediatype por props para que las llamadas sean completamente dinámicas
+//por ahora queda hardcodeado "movie"
+
+const CardCollectionPage = (props, mediatype) => {
 
     console.log(props);
 
     const [data, setData] = useState({});
 
-    let { pageNumber } = useParams();
-    let paramsObject = useParams(); //test para ver qué devuelve todo useParams en linea 12
+    let { classification, pageNumber } = useParams();
 
     useEffect(() => {
         console.log(pageNumber);
-        console.log(paramsObject);
 
         //ACA VA LA LLAMADA A LA API CON PAGE DINAMICA
-        getMoviesSeriesByPage("movie", "top_rated", pageNumber).then(data => setData(data));
+        getMoviesSeriesByPage("movie", classification, pageNumber).then(data => setData(data));
     }, []);
 
     console.log(data);
@@ -33,20 +34,21 @@ const CardCollectionPage = (props) => {
 
 
             <nav className="pagination">
-                <Link to={{ pathname: '/'}} /*className="pagination-previous"*/ onClick={prevPage}>{'<'}</Link>
+                <Link to={`/movie/${classification}/page/${parseInt(pageNumber) - 1}`} /*className="pagination-previous"*/ onClick={prevPage} style={{padding: "5px", color: "white"}}>{'<'}</Link>
                 
                 {pagination.map(page => {
                     return (<Link
-                        key={page.id}
-                        to={`/movie/top_rated/page/${page.id}`}
+                        key={page}
+                        to={`/movie/${classification}/page/${page}`}
                         //className={page.current ? 'pagination-link is-current' : 'pagination-link'}
-                        onClick={(e) => changePage(page.id, e)}>
-                        {page.id}
+                        onClick={(e) => changePage(page, e)}
+                        style={{padding: "5px", color: "white"}}>
+                        {page}
                         </Link>)
                     }) 
                 }
     
-                <Link to={`/movie`} /*className="pagination-next"*/ onClick={nextPage}>{'>'}</Link>
+                <Link to={`/movie/${classification}/page/${parseInt(pageNumber) + 1}`} /*className="pagination-next"*/ onClick={nextPage} style={{padding: "5px", color: "white"}}>{'>'}</Link>
             </nav>
         </div>
 
