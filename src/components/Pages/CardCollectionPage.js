@@ -22,31 +22,29 @@ const CardCollectionPage = (props) => {
 
     console.log(data);
     
-    const {pagination, prevPage, nextPage, changePage} = usePagination(data.total_pages, data.page)
+    const {pagination, prevPage, nextPage, changePage} = usePagination(data.total_pages, data.page);
+    console.log("va pagination");
+    console.log(pagination);
 
     return (
         <div>
-            holi
-            //ACA VA EL MAP DE data.results
+            
+            ACA VA EL MAP DE data.results
 
 
             <nav className="pagination">
                 <Link to={{ pathname: '/'}} /*className="pagination-previous"*/ onClick={prevPage}>{'<'}</Link>
                 
-                {pagination.map((page) => {
-                    if (!page.ellipsis) {
+                {pagination.map(page => {
                     return (<Link
                         key={page.id}
                         to={`/movie/top_rated/page/${page.id}`}
-                        className={page.current ? 'pagination-link is-current' : 'pagination-link'}
+                        //className={page.current ? 'pagination-link is-current' : 'pagination-link'}
                         onClick={(e) => changePage(page.id, e)}>
                         {page.id}
                         </Link>)
-                    } else {
-                    return <li key={page.id}><span className="pagination-ellipsis">&hellip;</span></li>
-                    }
+                    }) 
                 }
-                )}
     
                 <Link to={`/movie`} /*className="pagination-next"*/ onClick={nextPage}>{'>'}</Link>
             </nav>
