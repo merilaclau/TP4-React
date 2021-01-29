@@ -5,7 +5,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 /* import { getMoviesSeriesInfo } from './services/services'; */
 import './Card.scss';
 
-const Card = ({ name, poster_path, rating }) => {
+const Card = (data) => {
 
   /*  const [dataSeriesMoviesInfo, setSeriesMoviesInfo] = useState([]);
  
@@ -14,17 +14,20 @@ const Card = ({ name, poster_path, rating }) => {
    }, []) */
 
   return (
-    <Link to='/:{mediatype}/:{id}/:info'>
+    <Link
+      to={{
+        pathname: `/${data.mediatype}/${data.id}`
+      }}>
       <article className="card">
         <div className="card--header">
-          <div type="button"><img className="card--img" src={poster_path} /></div>
+          <div type="button"><img className="card--img" src={data.poster_path} /></div>
         </div>
         <div className="card--content">
           <h3 className="card--content-title" >
-            {name}
+            {data.name}
           </h3>
           <span className="card--content-rating">
-            <FontAwesomeIcon icon={faStar} /> {rating}
+            <FontAwesomeIcon icon={faStar} /> {data.rating}
           </span>
         </div>
       </article>

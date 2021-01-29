@@ -13,10 +13,11 @@ const App = () => {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path='/:{mediatype}/:{id}/:info' component={InfoPage} />
+        <Route exact path='/:mediatype/:id' component={InfoPage} />
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/movie' component={Movies} />
         <Route exact path='/tv' component={Series} />
+
       </Switch>
     </BrowserRouter>
   );
