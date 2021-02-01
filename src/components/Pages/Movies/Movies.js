@@ -18,19 +18,20 @@ const Movies = () => {
         getMoviesSeries("movie", "upcoming").then(data => setDataUpcomingMovies(data.results.slice(0, 5)));
         getMoviesSeries("movie", "now_playing").then(data => setDataNowPlayingMovies(data.results.slice(0, 5)));
     }, [])
+    const movie = "movie";
 
     return (
         <main className="main-container">
-            <CardList title={'Películas populares'} data={dataPopularMovies}>
+            <CardList title={'Películas populares'} data={dataPopularMovies} mediatype={movie}>
             </CardList>
 
-            <CardList title={'Películas con mejores Criticas'} data={dataTopRatedMovies}>
+            <CardList title={'Películas con mejores Criticas'} data={dataTopRatedMovies} mediatype={movie}>
             </CardList>
 
-            <CardList title={'Películas a estrenarse'} data={dataUpcomingMovies}>
+            <CardList title={'Películas a estrenarse'} data={dataUpcomingMovies} mediatype={movie}>
             </CardList>
 
-            <CardList title={'Películas en cartelera'} data={dataNowPlayingMovies}>
+            <CardList title={'Películas en cartelera'} data={dataNowPlayingMovies} mediatype={movie}>
             </CardList>
         </main>
     )
