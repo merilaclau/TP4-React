@@ -3,6 +3,7 @@ import { getMoviesSeries } from '../../../services/services';
 import { Link, useParams } from "react-router-dom";
 import usePagination from '../../hooks/usePagination';
 import './CardCollectionPage.scss';
+import Card from '../../Card/Card';
 
 const CardCollectionPage = (props) => {
 
@@ -22,36 +23,37 @@ const CardCollectionPage = (props) => {
     console.log(pagination);
 
     return (
-        <div>
-            
-            ACA VA EL MAP DE data.results
-
+        <React.Fragment>
+            <div>
+                {data.results.map(item => {
+                    return( )
+                    })
+                }
+            </div>
             <nav className="pagination">
-                <Link to={`/${mediatype}/${classification}/page/${pageNumber - 1}`} /*className="pagination-previous"*/ style={{padding: "5px", color: "white"}}>{'<'}</Link>
+                <Link to={`/${mediatype}/${classification}/page/${pageNumber - 1}`} style={{padding: "5px", color: "white"}}>{'<'}</Link>
                 
-                {pagination.map(page => {
+                {pagination.map((page, key) => {
                     if (typeof page === "number") {
                         return (<Link
                         className={page == pageNumber ? "currentPage" : null}
                         key={page}
                         to={`/${mediatype}/${classification}/page/${page}`}
-                        //className={page.current ? 'pagination-link is-current' : 'pagination-link'}
                         style={{padding: "5px", color: "white"}}>
                         {page}
                         </Link>)
                     } else {
-                        let i = 0;
-                            return (<span
-                                key={i++ + `${page}`}
-                                style={{padding: "5px", color: "white"}}>
-                                {page}
-                            </span>)
+                        return (<span
+                            key={key + `-${page}`}
+                            style={{padding: "5px", color: "white"}}>
+                            {page}
+                        </span>)
                         }   
                     }) 
                 }
-                <Link to={`/${mediatype}/${classification}/page/${parseInt(pageNumber) + 1}`} /*className="pagination-next" */ style={{padding: "5px", color: "white"}}>{'>'}</Link>
+                <Link to={`/${mediatype}/${classification}/page/${parseInt(pageNumber) + 1}`} style={{padding: "5px", color: "white"}}>{'>'}</Link>
             </nav>
-        </div>
+        </React.Fragment>
     )
 }
 

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import './Card.scss';
 
-const Card = ({name, poster_path, rating}) => {
+const Card = (data) => {
   return (
     <article className = "card">
       <div className = "card--header">

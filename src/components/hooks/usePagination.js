@@ -9,7 +9,7 @@ const usePagination = (totalPages, pageNum) => {
     setCurrentPage(pageNum)
   }, [pageNum])
 
-  if (currentPage === 1 || currentPage <= 5) {
+  if (currentPage === 1 || currentPage < 5) {
     for (let i = 1; i <= 5; i++) {
       pagination.push(i);
     }
