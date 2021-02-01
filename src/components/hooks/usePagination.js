@@ -43,24 +43,7 @@ const usePagination = (totalPages, pageNum) => {
     pagination.push(totalPages);
   }
 
-  const changePage = (page) => {
-    if(page !== currentPage) {
-      setCurrentPage(page);
-    }
-  }
-
-  const goToPrevPage = () => {
-    setCurrentPage(prevVal => prevVal - 1 === 0 ? prevVal : prevVal - 1);
-  }
-  
-  const goToNextPage = () => {
-    setCurrentPage(prevVal => prevVal === totalPages ? prevVal : prevVal + 1);
-  }
-
-  return { pagination,
-    prevPage: goToPrevPage,
-    nextPage: goToNextPage,
-    changePage
+  return { pagination
   };
 }
 
