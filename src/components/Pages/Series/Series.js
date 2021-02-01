@@ -18,15 +18,17 @@ const Series = () => {
         getMoviesSeries("tv", "airing_today").then(data => setDataAiringTodaySeries(data.results.slice(0, 5)));
     }, [])
 
+    let series = "tv";
+
     return (
         <main className="main-container">
-            <CardList title={'Series populares'} data={dataPopularSeries}>
+            <CardList title={'Series populares'} data={dataPopularSeries} mediatype={series}>
             </CardList>
 
-            <CardList title={'Series con mejores Criticas'} data={dataTopRatedSeries}>
+            <CardList title={'Series con mejores Criticas'} data={dataTopRatedSeries} mediatype={series}>
             </CardList>
 
-            <CardList title={'Series en el aire'} data={dataAiringTodaySeries}>
+            <CardList title={'Series en el aire'} data={dataAiringTodaySeries} mediatype={series}>
             </CardList>
         </main>
     )

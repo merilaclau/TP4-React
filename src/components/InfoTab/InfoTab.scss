@@ -1,0 +1,26 @@
+
+.MovieNav{
+    display: flex;
+    justify-content: center;
+    .MovieNav-Bar {
+        margin-top: 20px;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 1rem;
+        .MovieNav-Detail {
+        color: rgb(168, 170, 173);
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px;
+        padding-bottom: 10px;
+        transition: all 0.3s ease 0s;
+        text-decoration: none;
+        &:hover{
+            color: #fff;
+        }
+        }
+    }
+}
+
