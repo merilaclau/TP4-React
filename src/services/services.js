@@ -26,14 +26,15 @@ export const getMoviesSeries = async (mediatype, classification, page = 1) => {
     }
 }
 
-/* export const getMoviesSeriesInfo = async (mediatype, id) => {
+export const getMoviesSeriesInfo = async (mediatype, id) => {
     try {
-        const res = await axios.get(baseUrl + `${mediatype}/${id}?api_key=${apiKey}&language=en-US&page=1`);
+        const res = await axios.get(baseUrl + `${mediatype}/${id}?api_key=${apiKey}&language=en-US`);
         return res.data;
     } catch (err) {
         throw new Error(`Error getting movies or series: ${err}`);
     }
-} */
+}
+
 //SEARCH
 export const getSearchResults = async (inputValue, page = 1) => {
     try {

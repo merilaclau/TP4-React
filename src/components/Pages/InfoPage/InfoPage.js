@@ -1,30 +1,35 @@
-import React from 'react';
-/* import { useEffect, useState } from 'react'; */
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import './InfoPage.scss';
 import Poster from '../../Poster/Poster';
 import InfoTab from '../../InfoTab/InfoTab';
+import axios from 'axios';
 
 
+const InfoPage = () => {
+    const [element, setElement] = useState({})
+    const { mediatype, id } = useParams()
+    const baseUrl = 'https://api.themoviedb.org/3/';
+    const apiKey = 'c109fe29d552e543e892f6c6ec7a140c';
 
+    const getMoviesSeriesInfo = async (mediatype, id) => {
+        try {
+            const res = await axios.get(baseUrl + `${mediatype}/${id}?api_key=${apiKey}&language=en-US`);
+            return res.data;
+        } catch (err) {
+            throw new Error(`Error getting movies or series: ${err}`);
+        }
+    }
 
-/* import { getTrendingElements } from '../../services/services'; */
+    useEffect(async () => {
+        getMoviesSeriesInfo(mediatype, id).then(data => setElement(data));
+    }, {})
 
-
-const InfoPage = (dataSeriesMoviesInfo) => {
-
-    /*   useEffect(() => {
-  
-          getTrendingElements("trending", "movie").then(data => setDataMovies(data.results.slice(0, 5)));
-          getTrendingElements("trending", "tv").then(data => setDataSeries(data.results.slice(0, 5)));
-  
-      }, [])
-  
-      console.log('dataMovies', dataMovies);
-      console.log('dataSeries', dataSeries); */
-
+    console.log('Ver que trae de la pelicula')
+    console.log(element)
     return (
         <main className="main-container">
-            <Poster></Poster>
+            <Poster data={element.backdrop_path}></Poster>
             <InfoTab />
 
         </main>
@@ -32,18 +37,3 @@ const InfoPage = (dataSeriesMoviesInfo) => {
 }
 
 export default InfoPage;
-
-
-
-// MOVIES!!!
-
-// const moviesClassification = ["top_rated", "popular", "upcoming"];
-
-// moviesClassification.map(classification => {
-//   getElements("movies", classification)
-//   <Cadrlihg>
-//     slide.data.map(card => {
-
-//     })
-//   </Cadrlihg>
-// })
