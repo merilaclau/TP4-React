@@ -15,9 +15,9 @@ const App = () => {
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/movie' component={Movies} />
         <Route exact path='/tv' component={Series} />
-        <Route exact path='/movie/:classification/page/:pageNumber' component={CardCollectionPage} />
-        <Route exact path='/tv/:classification/page/:pageNumber' component={CardCollectionPage} />
-        <Route exact path='/multi/:query/page/:pageNumber' component={CardCollectionPage} />
+        <Route exact path='/movie/:classification/page/:pageNumber' render={(props) => (<CardCollectionPage {...props} mediatype={'movie'} />)} />
+        <Route exact path='/tv/:classification/page/:pageNumber' render={(props) => (<CardCollectionPage {...props} mediatype={'tv'} />)} />
+        <Route exact path='/multi/:query/page/:pageNumber' render={(props) => (<CardCollectionPage {...props} mediatype={'multi'} />)} />
       </Switch>
     </BrowserRouter>
   );

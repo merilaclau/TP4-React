@@ -3,27 +3,20 @@ import { getMoviesSeriesByPage } from '../../services/services';
 import { Link, useParams } from "react-router-dom";
 import usePagination from '../hooks/usePagination';
 
-//tenemos que pasarle mediatype por props para que las llamadas sean completamente dinámicas
-//por ahora queda hardcodeado "movie"
-
-const CardCollectionPage = (props, mediatype) => {
+const CardCollectionPage = (props) => {
 
     console.log(props);
-
+    const mediatype = props.mediatype;
     const [data, setData] = useState({});
-
     let { classification, pageNumber } = useParams();
 
     useEffect(() => {
-        console.log(pageNumber);
+        getMoviesSeriesByPage(mediatype, classification, pageNumber).then(data => setData(data));
+    }, [pageNumber]);
 
-        //ACA VA LA LLAMADA A LA API CON PAGE DINAMICA
-        getMoviesSeriesByPage("movie", classification, pageNumber).then(data => setData(data));
-    }, []);
-
-    console.log(data);
+    let {pagination, prevPage, nextPage, changePage} = usePagination(data.total_pages, data.page);
     
-    const {pagination, prevPage, nextPage, changePage} = usePagination(data.total_pages, data.page);
+    console.log(data);
     console.log("va pagination");
     console.log(pagination);
 
@@ -34,21 +27,29 @@ const CardCollectionPage = (props, mediatype) => {
 
 
             <nav className="pagination">
-                <Link to={`/movie/${classification}/page/${parseInt(pageNumber) - 1}`} /*className="pagination-previous"*/ onClick={prevPage} style={{padding: "5px", color: "white"}}>{'<'}</Link>
+                <Link to={`/${mediatype}/${classification}/page/${parseInt(pageNumber) - 1}`} /*className="pagination-previous"*/ onClick={prevPage} style={{padding: "5px", color: "white"}}>{'<'}</Link>
                 
                 {pagination.map(page => {
-                    return (<Link
+                    if (typeof page === "number") {
+                        return (<Link
                         key={page}
-                        to={`/movie/${classification}/page/${page}`}
+                        to={`/${mediatype}/${classification}/page/${page}`}
                         //className={page.current ? 'pagination-link is-current' : 'pagination-link'}
                         onClick={(e) => changePage(page, e)}
                         style={{padding: "5px", color: "white"}}>
                         {page}
                         </Link>)
+                    } else {
+                        let i = 0;
+                            return (<span
+                                key={i++ + `${page}`}
+                                style={{padding: "5px", color: "white"}}>
+                                {page}
+                            </span>)
+                        }   
                     }) 
                 }
-    
-                <Link to={`/movie/${classification}/page/${parseInt(pageNumber) + 1}`} /*className="pagination-next"*/ onClick={nextPage} style={{padding: "5px", color: "white"}}>{'>'}</Link>
+                <Link to={`/${mediatype}/${classification}/page/${parseInt(pageNumber) + 1}`} /*className="pagination-next"*/ onClick={nextPage} style={{padding: "5px", color: "white"}}>{'>'}</Link>
             </nav>
         </div>
 

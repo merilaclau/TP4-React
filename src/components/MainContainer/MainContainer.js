@@ -32,18 +32,3 @@ const MainContainer = () => {
 }
 
 export default MainContainer;
-
-
-
-// MOVIES!!!
-
-// const moviesClassification = ["top_rated", "popular", "upcoming"];
-
-// moviesClassification.map(classification => {
-//   getElements("movies", classification)
-//   <Cadrlihg>
-//     slide.data.map(card => {
-
-//     })
-//   </Cadrlihg>
-// })
