@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import './MainContainer.scss';
-import CardList from '../CardList/CardList';
-import { getTrendingElements } from '../../services/services';
+import CardList from '../../CardList/CardList';
+import { getTrendingElements } from '../../../services/services';
 
 
 const MainContainer = () => {
