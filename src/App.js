@@ -5,6 +5,7 @@ import Movies from './components/Pages/Movies/Movies';
 import Series from './components/Pages/Series/Series';
 import MainContainer from './components/Pages/MainContainer/MainContainer';
 import InfoPage from './components/Pages/InfoPage/InfoPage';
+import CardCollectionPage from './components/Pages/CardCollectionPage/CardCollectionPage'
 import './App.scss';
 
 const App = () => {
@@ -17,7 +18,9 @@ const App = () => {
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/movie' component={Movies} />
         <Route exact path='/tv' component={Series} />
-
+        <Route exact path='/movie/:classification/page/:pageNumber' render={(props) => (<CardCollectionPage {...props} mediatype={'movie'} />)} />
+        <Route exact path='/tv/:classification/page/:pageNumber' render={(props) => (<CardCollectionPage {...props} mediatype={'tv'} />)} />
+        <Route exact path='/multi/:query/page/:pageNumber' render={(props) => (<CardCollectionPage {...props} mediatype={'multi'} />)} />
       </Switch>
     </BrowserRouter>
   );

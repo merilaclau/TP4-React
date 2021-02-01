@@ -17,6 +17,7 @@ export const getTrendingElements = async (classification, mediatype) => {
 //IMPORTANT: unlike trending movies & series, to get other lists of movies and series, invert the order of parameters mediatype and classification
 //movie options are "popular" || "top_rated" || "now_playing" || "upcoming"
 //tv options are "popular" || "top_rated" || "airing_today"
+
 export const getMoviesSeries = async (mediatype, classification, page = 1) => {
     try {
         const res = await axios.get(baseUrl + `${mediatype}/${classification}?api_key=${apiKey}&language=en-US&page=${page}`);
