@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar';
-import Movies from './components/Movies/Movies';
-import Series from './components/Series/Series';
-import MainContainer from './components/MainContainer/MainContainer';
+import Movies from './components/Pages/Movies/Movies';
+import Series from './components/Pages/Series/Series';
+import MainContainer from './components/Pages/MainContainer/MainContainer';
 import './App.scss';
 
 const App = () => {
