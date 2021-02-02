@@ -45,12 +45,3 @@ export const getSearchResults = async (inputValue, page = 1) => {
         throw new Error(`Error getting search results: ${err}`);
     }
 }
-
-
-
-/* https://api.themoviedb.org/3/movie/{movie_id}?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US */
-/* https://api.themoviedb.org/3/tv/{tv_id}?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US */
-/*
-Series al aire
-https://api.themoviedb.org/3/tv/airing_today?api_key=c109fe29d552e543e892f6c6ec7a140c&language=en-US&page=1
-*/
