@@ -2,3 +2,12 @@
     background-color: lightcoral;
     border-radius: 50%;
 }
+
+.card--collection-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    justify-self: center;
+    width: 95%;
+}
