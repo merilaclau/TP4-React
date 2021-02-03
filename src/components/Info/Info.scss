@@ -1,0 +1,19 @@
+.InfoTab-container{
+    padding: 50px;
+    display: flex;
+	flex-direction: row;
+    .InfoTab-img{
+        width: 250px;
+        height: 370px;
+
+    }
+    .InfoTab-item{
+        margin-left: 30px;
+        width: 600px;
+        text-align: left;
+        line-height: 25px;
+        .item-title{
+        margin-bottom: 20px;
+        }
+    }
+}

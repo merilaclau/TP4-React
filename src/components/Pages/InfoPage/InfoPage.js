@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import './InfoPage.scss';
 import Poster from '../../Poster/Poster';
 import InfoTab from '../../InfoTab/InfoTab';
+import Info from '../../Info/Info';
 import axios from 'axios';
 
 
@@ -21,7 +22,7 @@ const InfoPage = () => {
         }
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         getMoviesSeriesInfo(mediatype, id).then(data => setElement(data));
     }, {})
 
@@ -31,7 +32,21 @@ const InfoPage = () => {
         <main className="main-container">
             <Poster data={element.backdrop_path}></Poster>
             <InfoTab />
-
+            <Info tituloTv={element.name}
+                sinopsis={element.overview}
+                presupuesto={element.budget}
+                urlImg={element.poster_path}
+                titulo={element.original_title}
+                genero={element.genres}
+                rating={element.vote_average}
+                produccion={element.production_companies}
+                recaudacion={element.revenue}
+                temporadas={element.number_of_seasons}
+                episodios={element.number_of_episodes} />
+            {/*   <Reparto />
+            <Videos />
+            <Episodios urlImg={element.urlImg} />
+            <Similares urlImg={element.urlImg} /> */}
         </main>
     )
 }
