@@ -10,13 +10,19 @@ const InfoTab = () => {
                 <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/info`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }} >
                     INFO
             </Link>
-                <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/reparto`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
+                <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/cast`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
                     REPARTO
             </Link>
-                <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/videos`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
-                    VIDEOS
-            </Link>
-                <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/videos`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
+                {mediatype == "movie" && (
+                    <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/videos`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
+                        VIDEOS
+                    </Link>)}
+                {mediatype == "tv" && (
+                    <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/seasons/1`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
+                        EPISODIOS </Link>)}
+
+
+                <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/similares`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
                     SIMILARES
             </Link>
             </div>

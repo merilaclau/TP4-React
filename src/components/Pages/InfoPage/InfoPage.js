@@ -4,6 +4,7 @@ import './InfoPage.scss';
 import Poster from '../../Poster/Poster';
 import InfoTab from '../../InfoTab/InfoTab';
 import Info from '../../Info/Info';
+import EpisodiosTab from '../../EpisodioTab/EpisodioTab';
 import axios from 'axios';
 
 
@@ -43,10 +44,6 @@ const InfoPage = () => {
                 recaudacion={element.revenue}
                 temporadas={element.number_of_seasons}
                 episodios={element.number_of_episodes} />
-            {/*   <Reparto />
-            <Videos />
-            <Episodios urlImg={element.urlImg} />
-            <Similares urlImg={element.urlImg} /> */}
         </main>
     )
 }

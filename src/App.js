@@ -5,6 +5,7 @@ import Movies from './components/Pages/Movies/Movies';
 import Series from './components/Pages/Series/Series';
 import MainContainer from './components/Pages/MainContainer/MainContainer';
 import InfoPage from './components/Pages/InfoPage/InfoPage';
+import EpisodioTab from './components/EpisodioTab/EpisodioTab';
 import Info from './components/Info/Info';
 import './App.scss';
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route exact path='/movie' component={Movies} />
         <Route exact path='/tv' component={Series} />
         <Route exact path='/:mediatype/:id/info' component={Info} />
+        <Route exact path='/:mediatype/:id/seasons/1' component={EpisodioTab} />
       </Switch>
     </BrowserRouter>
   );
