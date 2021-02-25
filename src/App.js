@@ -18,7 +18,11 @@ const App = () => {
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/movie' component={Movies} />
         <Route exact path='/tv' component={Series} />
-        <Route exact path='/:mediatype/:id/info' component={Info} />
+        <Route exact path='/:mediatype/:id/info' component={InfoPage} />
+        <Route exact path='/:mediatype/:id/reparto' component={InfoPage} />
+        <Route exact path='/:mediatype/:id/episodios' component={InfoPage} />
+        <Route exact path='/:mediatype/:id/similares' component={InfoPage} />
+        <Route exact path='/:mediatype/:id/videos' component={InfoPage} />
       </Switch>
     </BrowserRouter>
   );
