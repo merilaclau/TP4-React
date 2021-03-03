@@ -5,6 +5,7 @@ import Poster from '../../Poster/Poster';
 import InfoTab from '../../InfoTab/InfoTab';
 import Info from '../../Info/Info';
 import Episodios from '../../Episodios/Episodios';
+import Similar from '../../Similar/Similar';
 import axios from 'axios';
 
 
@@ -27,7 +28,7 @@ const InfoPage = () => {
 
     useEffect(() => {
         getMoviesSeriesInfo(mediatype, id).then(data => setElement(data));
-    }, {})
+    }, [])
 
     console.log('Ver que trae de la pelicula')
     console.log(element)
@@ -58,7 +59,7 @@ const InfoPage = () => {
                 temporadas={element.number_of_seasons}
                 episodios={element.number_of_episodes} />}
             {sectionL[3] === "episodios" && <Episodios />}
-
+            {sectionL[3] === "similar" && <Similar />}
         </main>
     )
 }

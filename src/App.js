@@ -21,7 +21,7 @@ const App = () => {
         <Route exact path='/:mediatype/:id/info' component={InfoPage} />
         <Route exact path='/:mediatype/:id/reparto' component={InfoPage} />
         <Route exact path='/:mediatype/:id/episodios' component={InfoPage} />
-        <Route exact path='/:mediatype/:id/similares' component={InfoPage} />
+        <Route exact path='/:mediatype/:id/similar' component={InfoPage} />
         <Route exact path='/:mediatype/:id/videos' component={InfoPage} />
       </Switch>
     </BrowserRouter>

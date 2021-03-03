@@ -54,7 +54,7 @@ const Episodios = () => {
             <div className="seasons">
                 <select className="season-select" name="season" id="">
                     {temporadasAll.map((item, i) => {
-                        return <option onClick={handleClick} key={i} value={i + 1}>{item}</option>
+                        return <option onClick={handleClick} /* key={i} value={i + 1} */>{item}</option>
                     })}
                 </select>
             </div>

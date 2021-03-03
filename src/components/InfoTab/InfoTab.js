@@ -21,7 +21,7 @@ const InfoTab = () => {
                     <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/episodios`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
                         EPISODIOS </Link>)}
 
-                <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/similares`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
+                <Link className="MovieNav-Detail" to={`/${mediatype}/${id}/similar`} activeStyle={{ borderBottom: "2px solid #fff", paddingBottom: "1rem" }}>
                     SIMILARES
             </Link>
             </div>
