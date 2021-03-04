@@ -10,7 +10,7 @@ import axios from 'axios';
 
 
 const InfoPage = () => {
-    const [element, setElement] = useState({})
+    const [element, setElement] = useState([])
     const { mediatype, id } = useParams()
     const baseUrl = 'https://api.themoviedb.org/3/';
     const apiKey = 'c109fe29d552e543e892f6c6ec7a140c';
@@ -28,7 +28,7 @@ const InfoPage = () => {
 
     useEffect(() => {
         getMoviesSeriesInfo(mediatype, id).then(data => setElement(data));
-    }, [])
+    }, [mediatype, id])
 
     console.log('Ver que trae de la pelicula')
     console.log(element)

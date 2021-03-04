@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './Similar.scss';
-import Card from '../Card/Card';
+import CardList from '../CardList/CardList';
 import axios from 'axios'
 
 
@@ -10,7 +10,6 @@ const Similar = () => {
     const baseUrl = 'https://api.themoviedb.org/3/';
     const { mediatype, id } = useParams();
     const [similar, setSimilar] = useState([])
-    const [page, setPage] = useState(1)
 
     const apiKey = 'c109fe29d552e543e892f6c6ec7a140c';
 
@@ -31,6 +30,13 @@ const Similar = () => {
     console.log(similar)
 
     return (
+        <div>
+            {similar && <CardList data={similar} mediatype={mediatype} />}
+        </div>
+    )
+}
+
+/*     return (
         <div className="card--list">
             <div className="card--list-container">
                 {
@@ -38,17 +44,19 @@ const Similar = () => {
                         console.log(similar)
                         return (
                             <Card
-                                key={item.id}
                                 id={item.id}
+                                key={item.id}
                                 name={item.name || item.title}
                                 poster_path={'https://image.tmdb.org/t/p/w342' + item.poster_path}
+                                mediatype={mediatype}
+                            /*  pathname={item.pathname} 
                             />
                         )
                     })
                 }
             </div>
         </div>
-    );
-}
+    ); 
+}*/
 
 export default Similar;

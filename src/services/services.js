@@ -5,9 +5,9 @@ const apiKey = 'c109fe29d552e543e892f6c6ec7a140c';
 
 
 //TRENDING
-export const getTrendingElements = async (classification, mediatype) => {
+export const getTrendingElements = async (mediatype, classification) => {
     try {
-        const res = await axios.get(baseUrl + `${classification}/${mediatype}/day?api_key=${apiKey}`);
+        const res = await axios.get(baseUrl + `${mediatype}/${classification}/day?api_key=${apiKey}`);
         return res.data;
     } catch (err) {
         throw new Error(`Error getting trending elements: ${err}`);
