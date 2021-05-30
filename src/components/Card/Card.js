@@ -2,16 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-/* import { getMoviesSeriesInfo } from './services/services'; */
 import './Card.scss';
 
 const Card = (data) => {
-
-  /*  const [dataSeriesMoviesInfo, setSeriesMoviesInfo] = useState([]);
- 
-   useEffect(() => {
-     getMoviesSeriesInfo("movie", "464052").then(data => setSeriesMoviesInfo(data));
-   }, []) */
 
   return (
     <Link

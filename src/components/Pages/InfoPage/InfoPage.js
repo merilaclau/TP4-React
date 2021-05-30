@@ -6,6 +6,7 @@ import InfoTab from '../../InfoTab/InfoTab';
 import Info from '../../Info/Info';
 import Episodios from '../../Episodios/Episodios';
 import Similar from '../../Similar/Similar';
+import Reparto from '../../Reparto/Reparto';
 import axios from 'axios';
 
 
@@ -60,6 +61,7 @@ const InfoPage = () => {
                 episodios={element.number_of_episodes} />}
             {sectionL[3] === "episodios" && <Episodios />}
             {sectionL[3] === "similar" && <Similar />}
+            {sectionL[3] === "reparto" && <Reparto />}
         </main>
     )
 }

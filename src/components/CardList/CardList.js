@@ -17,10 +17,9 @@ function CardList({ title, data, mediatype }) {
                 key={item.id}
                 id={item.id}
                 name={item.name || item.title}
-                poster_path={'https://image.tmdb.org/t/p/w342' + item.poster_path}
+                poster_path={'https://image.tmdb.org/t/p/w342' + item.poster_path || 'https://image.tmdb.org/t/p/w370' + item.profile_path}
                 rating={item.vote_average}
                 mediatype={item.media_type ? item.media_type : mediatype}
-
               />
             )
           })
