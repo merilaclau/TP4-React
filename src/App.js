@@ -5,6 +5,7 @@ import Movies from './components/Pages/Movies/Movies';
 import Series from './components/Pages/Series/Series';
 import MainContainer from './components/Pages/MainContainer/MainContainer';
 import InfoPage from './components/Pages/InfoPage/InfoPage';
+import ResultView from './components/Pages/ResultsView/ResultsView';
 import './App.scss';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route exact path='/' component={MainContainer} />
         <Route exact path='/movie' component={Movies} />
         <Route exact path='/tv' component={Series} />
+        <Route exact path='/searchResults' component={ResultView} />
         <Route exact path='/:mediatype/:id/info' component={InfoPage} />
         <Route exact path='/:mediatype/:id/reparto' component={InfoPage} />
         <Route exact path='/:mediatype/:id/episodios' component={InfoPage} />

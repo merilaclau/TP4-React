@@ -1,46 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import './SearchInput.scss';
+import { Link } from 'react-router-dom';
+
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import '../../services/services';
-import { getSearchResults } from '../../services/services';
 
 const SearchInput = () => {
-  
   const [inputValue, setInputValue] = useState("");
-  
+
   const [data, setData] = useState([]);
+
+  const getData = async (inputValue) => {
+
+    try {
+      const res = await axios.get(`https://api.themoviedb.org/3/search/keyword?api_key=c109fe29d552e543e892f6c6ec7a140c&query=${inputValue}&page=1`);
+      setData(res.data.results);
+      console.log(res.data);
+    }
+    catch (err) {
+      alert(`Error getting data ${err}`);
+    }
+  }
 
   useEffect(() => {
     setTimeout(() => {
       if (inputValue.length > 0) {
-        getSearchResults(inputValue).then(data => setData(data.results));
-        console.log(data);
+        getData(inputValue)
       }
-     }, 1500) //revisar tema token de timeout para evitar multiples llamadas a la API
+    }, 1500) //revisar tema token de timeout para evitar multiples llamadas a la API
   }, [inputValue])
-
+  console.log("inputValue data");
   console.log(data);
-  
   return (
-    <section className="search-container">
-      <button className="search-container-button"><FontAwesomeIcon icon={faSearch} /></button>
-      <input 
-        className="search-container-input"  
-        type="text" 
-        name="searchInput"
-        placeholder="Búsqueda..."
-        value={inputValue}
-        onChange={e => setInputValue(e.target.value)} >
-      </input>
-    </section>
-    /*
-    <ul>
-        {data.map(item => {
-          return <li key={item.id}>{item.name}</li>
-        })}
-      </ul>
-    */
+
+    <>
+      <div className="search-container">
+        <Link className="header-menu-button" to={{ pathname: `/searchResults` }} activeStyle={{ color: "#2296F3" }}><FontAwesomeIcon icon={faSearch} /></Link>
+        <input className="search-container-input"
+          className="searchInput"
+          type="text"
+          name="searchInput"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+          placeholder="Búsqueda..." />
+      </div>
+    </>
   );
 }
 
